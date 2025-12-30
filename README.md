@@ -18,6 +18,28 @@ This lightweight accelerator demonstrates rapid time-to-value by ingesting messy
 - ✅ Include explicit cost transparency
 - ✅ Support human-in-the-loop decision making
 
+## 📸 Screenshots
+
+### Mission Intake
+Upload PDF, CSV, or TXT documents via drag-and-drop, or submit free-text content. Features classification banner for government environment styling.
+
+![Mission Intake](docs/screenshots/mission_intake.jpg)
+
+### Mission Registry
+Compact table view of all ingested missions with inline stats, status badges, and quick actions. Designed for data-dense analyst workflows.
+
+![Mission Registry](docs/screenshots/mission_registry.jpg)
+
+### Mission Detail & Analysis
+View ingested document content alongside AI-generated analysis including summary, risk classification, and extracted entities.
+
+![Mission Detail](docs/screenshots/mission_detail.jpg)
+
+### Analysis Results & Cost Transparency
+Full AI analysis with token usage, estimated costs, confidence scores, and human-in-the-loop analyst review workflow.
+
+![Analysis Results](docs/screenshots/analysis_results.jpg)
+
 ## 🏗️ Architecture
 
 ```
