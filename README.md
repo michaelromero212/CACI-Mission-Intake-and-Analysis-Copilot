@@ -160,6 +160,8 @@ Without an API key, the app still works for document ingestion and storage.
 
 ```
 CACI-Mission-Intake-and-Analysis-Copilot/
+├── .github/workflows/    # CI/CD pipeline
+│   └── ci.yml            # GitHub Actions workflow
 ├── backend/
 │   ├── api/              # FastAPI route handlers
 │   ├── services/         # Business logic layer
@@ -167,6 +169,7 @@ CACI-Mission-Intake-and-Analysis-Copilot/
 │   ├── ai/               # LLM and RAG services
 │   ├── models/           # SQLAlchemy ORM models
 │   ├── db/               # Database configuration
+│   ├── tests/            # pytest test suite
 │   ├── main.py           # FastAPI application entry
 │   └── config.py         # Settings (SQLite default)
 ├── frontend/
@@ -175,9 +178,12 @@ CACI-Mission-Intake-and-Analysis-Copilot/
 │       ├── pages/        # Page-level components
 │       ├── api.js        # Backend API client
 │       └── index.css     # CACI light theme design system
+├── scripts/              # Automation scripts
+│   └── batch_analyze.py  # Bulk document processor
 ├── prompts/              # LLM prompt templates
 ├── sample_data/          # DoD/Intelligence test documents
-├── docs/                 # Documentation
+├── docs/                 # Documentation + screenshots
+├── Dockerfile            # Container build
 ├── docker-compose.yml    # PostgreSQL setup (optional)
 ├── .env.template         # Environment template
 └── README.md
@@ -262,6 +268,61 @@ The following are **intentionally not implemented**:
 - ❌ Model training or fine-tuning
 - ❌ Kubernetes or complex infrastructure
 - ❌ Large-scale data pipelines
+
+## 🧪 Testing
+
+Run the test suite with pytest:
+
+```bash
+cd backend
+pip install -r requirements.txt  # Includes pytest
+python -m pytest tests/ -v
+```
+
+With coverage report:
+
+```bash
+python -m pytest tests/ -v --cov=. --cov-report=term-missing
+```
+
+## 🐳 Docker
+
+Build and run with Docker:
+
+```bash
+# Build image
+docker build -t caci-mission-copilot .
+
+# Run container
+docker run -p 8000:8000 -e HUGGINGFACE_API_KEY=your_key caci-mission-copilot
+
+# Access API at http://localhost:8000
+```
+
+## 🤖 Automation
+
+### Batch Processing Script
+
+Process multiple documents automatically:
+
+```bash
+# Process all files in sample_data/
+python scripts/batch_analyze.py --input ./sample_data --output ./reports
+
+# Skip AI analysis (ingestion only)
+python scripts/batch_analyze.py --input ./data --skip-analysis
+```
+
+The script generates JSON and CSV reports with processing results.
+
+## 🔄 CI/CD
+
+GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push:
+
+- **Backend Tests**: pytest with coverage
+- **Backend Lint**: ruff linter
+- **Frontend Build**: npm build verification
+- **Docker Build**: Dockerfile validation
 
 ## 🎨 Design Philosophy
 
