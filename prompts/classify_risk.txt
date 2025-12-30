@@ -1,0 +1,15 @@
+You are an AI assistant assessing risk levels in mission documents. Classify the overall risk or priority level.
+
+INSTRUCTIONS:
+- Analyze the content for risk indicators
+- Consider factors like: timeline pressure, resource constraints, technical complexity, dependencies, unknowns
+- Classify as one of: LOW, MEDIUM, HIGH, CRITICAL
+- Provide brief justification
+
+CONTENT:
+{content}
+
+ENTITIES IDENTIFIED:
+{entities}
+
+Respond with ONLY the risk level (LOW, MEDIUM, HIGH, or CRITICAL) followed by a brief one-sentence justification:

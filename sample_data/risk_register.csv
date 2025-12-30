@@ -1,0 +1,13 @@
+risk_id,risk_name,category,probability,impact,risk_score,mitigation_strategy,owner,status,last_updated
+R001,Schedule Slippage,Schedule,High,High,9,Add buffer time to critical path tasks; Weekly progress reviews,Project Manager,Active,2024-01-20
+R002,Key Personnel Departure,Resource,Medium,High,6,Cross-training program; Documentation of tribal knowledge,HR Lead,Active,2024-01-18
+R003,Requirements Creep,Scope,High,Medium,6,Formal change control process; Stakeholder sign-off required,Business Analyst,Active,2024-01-22
+R004,Technology Integration Issues,Technical,Medium,High,6,Proof of concept for integration points; Vendor support agreements,Tech Lead,Monitoring,2024-01-19
+R005,Budget Overrun,Cost,Medium,Medium,4,Monthly cost reviews; Contingency reserve of 15%,Finance Manager,Active,2024-01-21
+R006,Security Vulnerabilities,Security,Low,Critical,4,Regular security audits; Penetration testing before deployment,Security Officer,Active,2024-01-23
+R007,Data Quality Issues,Data,Medium,Medium,4,Data validation rules; Source data assessment,Data Engineer,Monitoring,2024-01-17
+R008,Vendor Delivery Delays,External,Medium,Medium,4,Alternative vendor identification; Contract penalty clauses,Procurement,Active,2024-01-20
+R009,User Adoption Resistance,Organizational,Medium,Medium,4,Early stakeholder engagement; Change management plan,Change Manager,Active,2024-01-22
+R010,Infrastructure Capacity,Technical,Low,Medium,2,Capacity planning; Cloud scalability options,Infrastructure Lead,Monitoring,2024-01-18
+R011,Compliance Gaps,Regulatory,Low,High,3,Compliance checklist; Regular audits,Compliance Officer,Active,2024-01-21
+R012,Communication Breakdown,Organizational,Medium,Low,2,Regular team meetings; Clear escalation paths,Project Manager,Monitoring,2024-01-19

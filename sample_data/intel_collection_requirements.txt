@@ -1,0 +1,74 @@
+INTELLIGENCE COLLECTION REQUIREMENTS DOCUMENT
+Classification: UNCLASSIFIED // FOR OFFICIAL USE ONLY
+
+Document ID: ICR-2024-0147
+Prepared By: CACI Intelligence Support Team
+Date: January 28, 2024
+Customer: Defense Intelligence Agency (DIA)
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 1: COLLECTION REQUIREMENT OVERVIEW
+
+Priority: HIGH
+Collection Discipline: SIGINT/OSINT Fusion
+Geographic Focus: Eastern European Theater
+Time Sensitivity: 72-hour reporting cycle
+
+The customer requires enhanced intelligence collection and analysis support focusing on adversary military logistics and supply chain activities. This requirement supports ongoing theater-level situational awareness and feeds into the Joint Intelligence Preparation of the Operational Environment (JIPOE).
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 2: SPECIFIC INFORMATION REQUIREMENTS (SIRs)
+
+SIR-001: Identify and track rail transport movements within the designated area of interest (AOI). Priority focus on military cargo classifications and temporal patterns.
+
+SIR-002: Monitor open-source indicators of fuel depot activity, including commercial satellite imagery analysis and social media intelligence (SOCMINT).
+
+SIR-003: Correlate SIGINT reporting with HUMINT collection to validate supply line interdiction opportunities.
+
+SIR-004: Develop pattern-of-life analysis for key logistics nodes using multi-INT fusion.
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 3: DELIVERABLES
+
+1. Daily SIGINT Summary Report (0600Z delivery)
+2. Weekly Multi-INT Fusion Assessment
+3. Bi-weekly Threat Update Brief (PowerPoint, TS//SCI version)
+4. Ad-hoc spot reports for time-sensitive intelligence
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 4: PERSONNEL REQUIREMENTS
+
+- 2x All-Source Analysts (TS//SCI with CI Poly)
+- 1x SIGINT Analyst (TS//SCI with Full-Scope Poly)
+- 1x GEOINT Analyst (TS//SCI)
+- 1x Collection Manager (TS//SCI)
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 5: TECHNICAL REQUIREMENTS
+
+- Access to IC Cloud environment (C2S)
+- JWICS workstations for classified processing
+- Palantir Gotham instance for data fusion
+- Commercial satellite imagery subscription (Maxar/Planet)
+
+═══════════════════════════════════════════════════════════════════
+
+SECTION 6: RISK FACTORS
+
+RISK-01: Clearance processing delays may impact staffing timeline
+RISK-02: Bandwidth limitations at forward operating location
+RISK-03: Customer requirement creep based on evolving threat picture
+RISK-04: Integration complexity with existing customer systems
+
+═══════════════════════════════════════════════════════════════════
+
+POINT OF CONTACT:
+CACI Program Manager: [REDACTED]
+DIA Technical POC: [REDACTED]
+
+Document Status: DRAFT - Pending Customer Approval

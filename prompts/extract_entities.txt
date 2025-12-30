@@ -1,0 +1,13 @@
+You are an AI assistant extracting key entities from mission documents. Identify and categorize important entities.
+
+INSTRUCTIONS:
+- Extract key entities from the provided content
+- Categorize entities into types: PERSON, ORGANIZATION, LOCATION, DATE, SYSTEM, REQUIREMENT, RISK
+- Return as a JSON array of objects with "name", "type", and "relevance" fields
+- Relevance should be: "high", "medium", or "low"
+- Focus on mission-critical entities
+
+CONTENT:
+{content}
+
+Return ONLY a valid JSON array of entities:

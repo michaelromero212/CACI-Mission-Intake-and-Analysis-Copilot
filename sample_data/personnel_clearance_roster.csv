@@ -1,0 +1,13 @@
+personnel_id,name,clearance_level,polygraph_type,position,program,location,clearance_expiry,ci_awareness_date,security_training_date,notes
+CACI-001,WILLIAMS Sarah J,TS/SCI,Full Scope,All-Source Analyst,DIA Support,Pentagon,2026-03-15,2024-01-15,2024-01-10,Lead analyst for Eastern Europe desk
+CACI-002,CHEN Michael T,TS/SCI,CI Poly,SIGINT Analyst,NSA TAO Support,Fort Meade,2025-11-20,2024-01-12,2024-01-08,Mandarin linguist qualified
+CACI-003,RODRIGUEZ Maria L,TS/SCI,Full Scope,Collection Manager,NCTC,McLean VA,2027-02-28,2024-01-18,2024-01-15,10 years IC experience
+CACI-004,THOMPSON James R,TS/SCI,CI Poly,GEOINT Analyst,NGA Foundation,Springfield,2025-08-10,2024-01-05,2024-01-03,Imagery analysis certification current
+CACI-005,PATEL Priya A,SECRET,None,Program Analyst,Army G2,Pentagon,2026-06-30,2024-01-20,2024-01-18,TS upgrade in process
+CACI-006,JOHNSON David K,TS/SCI,Full Scope,Cyber Threat Analyst,CYBERCOM,Fort Meade,2026-09-15,2024-01-08,2024-01-05,GIAC certified
+CACI-007,GARCIA Ana M,TS/SCI,CI Poly,HUMINT Support,DIA HUMINT,Bolling AFB,2025-04-22,2024-01-10,2024-01-08,Former military CI
+CACI-008,ANDERSON Erik L,TS/SCI,Full Scope,Technical Lead,NSA CES,Fort Meade,2027-01-15,2024-01-22,2024-01-20,Architecture design lead
+CACI-009,NGUYEN Kim H,TS/SCI,CI Poly,Data Scientist,NRO,Chantilly,2026-12-01,2024-01-14,2024-01-12,ML/AI specialist
+CACI-010,MARTINEZ Carlos R,SECRET,None,IT Systems Admin,DIA IT,Reston,2025-10-05,2024-01-17,2024-01-15,Network engineer AWS certified
+CACI-011,TAYLOR Ashley B,TS/SCI,Full Scope,Operations Officer,CIA DS,Langley,2026-07-20,2024-01-06,2024-01-04,Deployed experience
+CACI-012,WILSON Robert G,TS/SCI,CI Poly,Counterintel Analyst,FBI NJTTF,Washington DC,2025-05-18,2024-01-19,2024-01-17,Former FBI special agent
