@@ -8,7 +8,7 @@ An ESF-aligned AI accelerator for mission document analysis with LLM-assisted su
 
 ## 🎯 Project Overview
 
-This lightweight accelerator demonstrates rapid time-to-value by ingesting messy mission inputs (PDFs, CSVs, and free text), normalizing them, applying LLM-assisted analysis, persisting structured results in PostgreSQL, and presenting explainable outputs in a responsive web dashboard with explicit cost transparency.
+This lightweight accelerator demonstrates rapid time-to-value by ingesting messy mission inputs (PDFs, CSVs, TXT files, and free text), normalizing them, applying LLM-assisted analysis, persisting structured results, and presenting explainable outputs in a responsive web dashboard with explicit cost transparency.
 
 **This is intentionally not a production system.** It is a high-leverage Enterprise Solutions Factory (ESF) accelerator designed to:
 
@@ -22,8 +22,8 @@ This lightweight accelerator demonstrates rapid time-to-value by ingesting messy
 
 ```
 ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│   React Frontend │────▶│   FastAPI Backend│────▶│   PostgreSQL     │
-│   (Vite)         │     │   + AI Services  │     │   Database       │
+│   React Frontend │────▶│   FastAPI Backend│────▶│   SQLite/        │
+│   (Vite)         │     │   + AI Services  │     │   PostgreSQL     │
 └──────────────────┘     └──────────────────┘     └──────────────────┘
                                   │
                          ┌───────┴───────┐
@@ -41,6 +41,7 @@ See [docs/architecture.md](docs/architecture.md) for detailed component diagrams
 ### Document Ingestion
 - **PDF Upload**: Extract text and metadata from PDF documents
 - **CSV Upload**: Parse structured data with automatic schema detection
+- **TXT Upload**: Upload plain text intelligence documents
 - **Free Text**: Submit analyst notes, emails, or summaries directly
 
 ### AI-Assisted Analysis
@@ -52,7 +53,7 @@ See [docs/architecture.md](docs/architecture.md) for detailed component diagrams
 ### Cost Transparency
 - Token usage tracking for every analysis
 - Estimated cost display (Hugging Face free tier = $0)
-- Audit trail in PostgreSQL
+- Audit trail in database
 
 ### Human-in-the-Loop
 - Analyst review workflow
@@ -65,55 +66,73 @@ See [docs/architecture.md](docs/architecture.md) for detailed component diagrams
 
 - Python 3.11+
 - Node.js 18+
-- PostgreSQL 15+ (or Docker)
-- Hugging Face API key (free tier)
+- Hugging Face API key (free tier) - *optional for demo*
 
-### 1. Clone and Setup
+### Option 1: Local Development (SQLite - Easiest)
+
+The application defaults to **SQLite** for zero-configuration setup. No Docker or PostgreSQL required!
 
 ```bash
-git clone https://github.com/your-org/CACI-Mission-Intake-and-Analysis-Copilot.git
+# Clone repository
+git clone https://github.com/michaelromero212/CACI-Mission-Intake-and-Analysis-Copilot.git
 cd CACI-Mission-Intake-and-Analysis-Copilot
 
-# Copy environment template
-cp .env.template .env
-# Edit .env with your Hugging Face API key
-```
-
-### 2. Start PostgreSQL
-
-```bash
-# Using Docker
-docker-compose up -d
-
-# Or use local PostgreSQL and update DATABASE_URL in .env
-```
-
-### 3. Install Backend Dependencies
-
-```bash
+# Backend setup
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-### 4. Start Backend
+# Start backend (creates mission_copilot.db automatically)
+./venv/bin/python -m uvicorn main:app --reload --port 8000
 
-```bash
-cd backend
-uvicorn main:app --reload
-# API available at http://localhost:8000
-# Docs at http://localhost:8000/docs
-```
-
-### 5. Install and Start Frontend
-
-```bash
+# In a new terminal - Frontend setup
 cd frontend
 npm install
 npm run dev
-# App available at http://localhost:5173
 ```
+
+**Access the app at:** http://localhost:5173
+
+### Option 2: PostgreSQL with Docker
+
+For production-like setup with PostgreSQL:
+
+```bash
+# Copy environment template
+cp .env.template .env
+
+# Edit .env and set:
+# DATABASE_URL=postgresql+asyncpg://postgres:postgres@localhost:5432/mission_copilot
+
+# Start PostgreSQL
+docker-compose up -d
+
+# Then follow backend/frontend steps above
+```
+
+### Option 3: External PostgreSQL
+
+Set the `DATABASE_URL` environment variable to your PostgreSQL connection string:
+
+```bash
+export DATABASE_URL="postgresql+asyncpg://user:password@host:5432/database"
+```
+
+## 🔑 Enabling AI Analysis
+
+To use AI analysis features, get a free Hugging Face API key:
+
+1. Sign up at https://huggingface.co
+2. Go to Settings → Access Tokens
+3. Create a new token
+
+```bash
+# Create .env file in backend/
+echo "HUGGINGFACE_API_KEY=hf_your_key_here" > backend/.env
+```
+
+Without an API key, the app still works for document ingestion and storage.
 
 ## 📁 Repository Structure
 
@@ -122,82 +141,82 @@ CACI-Mission-Intake-and-Analysis-Copilot/
 ├── backend/
 │   ├── api/              # FastAPI route handlers
 │   ├── services/         # Business logic layer
-│   ├── ingestion/        # Document parsers
+│   ├── ingestion/        # Document parsers (PDF, CSV, TXT)
 │   ├── ai/               # LLM and RAG services
 │   ├── models/           # SQLAlchemy ORM models
 │   ├── db/               # Database configuration
 │   ├── main.py           # FastAPI application entry
-│   └── config.py         # Settings management
+│   └── config.py         # Settings (SQLite default)
 ├── frontend/
 │   └── src/
 │       ├── components/   # Reusable React components
 │       ├── pages/        # Page-level components
 │       ├── api.js        # Backend API client
-│       └── index.css     # CACI design system
+│       └── index.css     # CACI light theme design system
 ├── prompts/              # LLM prompt templates
-├── sample_data/          # Test documents
+├── sample_data/          # DoD/Intelligence test documents
 ├── docs/                 # Documentation
-├── docker-compose.yml    # PostgreSQL setup
+├── docker-compose.yml    # PostgreSQL setup (optional)
 ├── .env.template         # Environment template
 └── README.md
 ```
 
 ## 📊 Database Schema
 
+The application uses SQLAlchemy ORM with support for both SQLite and PostgreSQL.
+
 ### missions
 | Column | Type | Description |
 |--------|------|-------------|
-| mission_id | UUID | Primary key |
-| source_type | ENUM | pdf, csv, text |
+| mission_id | String(36) | UUID primary key |
+| source_type | String | pdf, csv, text |
 | filename | VARCHAR | Original filename |
-| status | ENUM | pending, ingested, analyzing, analyzed, error |
+| status | String | pending, ingested, analyzing, analyzed, error |
 | normalized_content | TEXT | Processed content |
-| metadata | JSON | Source-specific metadata |
+| mission_metadata | JSON | Source-specific metadata |
 | ingestion_timestamp | TIMESTAMP | When ingested |
 
 ### analysis_results
 | Column | Type | Description |
 |--------|------|-------------|
-| analysis_id | UUID | Primary key |
-| mission_id | UUID | Foreign key to missions |
+| analysis_id | String(36) | UUID primary key |
+| mission_id | String(36) | Foreign key to missions |
 | summary_text | TEXT | AI-generated summary |
 | extracted_entities | JSON | Structured entity list |
-| risk_level | ENUM | low, medium, high, critical |
+| risk_level | String | low, medium, high, critical |
 | total_tokens | INT | Token count |
 | estimated_cost | FLOAT | Cost estimate |
 
 ### analyst_reviews
 | Column | Type | Description |
 |--------|------|-------------|
-| review_id | UUID | Primary key |
-| mission_id | UUID | Foreign key to missions |
+| review_id | String(36) | UUID primary key |
+| mission_id | String(36) | Foreign key to missions |
 | analyst_notes | TEXT | Human feedback |
 | approved | BOOLEAN | Approval status |
 
+## 🧪 Sample Data
+
+The `sample_data/` directory includes realistic DoD/Intelligence documents:
+
+| File | Description |
+|------|-------------|
+| `intel_collection_requirements.txt` | DIA collection requirements document |
+| `sigint_analyst_summary.txt` | SIGINT analyst daily shift report |
+| `threat_assessment.csv` | Multi-threat assessment matrix |
+| `personnel_clearance_roster.csv` | Clearance and polygraph tracking |
+| `contract_performance_report.txt` | Contract status and CDRLs |
+| `risk_register.csv` | Project risks with mitigations |
+| `task_list.csv` | Project task dependencies |
+| `analyst_notes.txt` | Free-form technical observations |
+| `mission_summary.txt` | Formal mission overview |
+
 ## 🔄 Example Workflow
 
-### 1. Upload Sample Data
-
-```bash
-# Navigate to the app
-open http://localhost:5173
-
-# Upload sample_data/risk_register.csv via the UI
-```
-
-### 2. Run Analysis
-
-Click "Run AI Analysis" to generate:
-- Summary of the risk register
-- Extracted entities (risks, owners, dates)
-- Overall risk classification
-- Cost transparency data
-
-### 3. Review and Approve
-
-- View AI-generated content (clearly labeled)
-- Add analyst notes
-- Approve or request re-analysis
+1. **Upload**: Navigate to http://localhost:5173 and upload a CSV, TXT, or PDF
+2. **Ingest**: Document is parsed, normalized, and stored
+3. **Analyze**: Click "Run AI Analysis" for summarization and entity extraction
+4. **Review**: Add analyst notes and approve or reject the analysis
 
 ## 💰 Cost Transparency
 
@@ -227,21 +246,11 @@ The following are **intentionally not implemented**:
 See [docs/design_decisions.md](docs/design_decisions.md) for detailed rationale on:
 
 - Why Hugging Face over OpenAI
-- PostgreSQL async patterns
+- SQLite default for easy development
+- PostgreSQL support for production
 - FAISS vs Chroma for RAG
-- Heuristic confidence indicators
-- Light theme only
-
-## 🧪 Testing with Sample Data
-
-The `sample_data/` directory includes:
-
-| File | Description |
-|------|-------------|
-| `task_list.csv` | Project task data with dependencies |
-| `risk_register.csv` | Risk items with mitigations |
-| `analyst_notes.txt` | Free-form technical observations |
-| `mission_summary.txt` | Formal mission overview document |
+- Light theme with CACI branding
+- Government/Intelligence UI patterns
 
 ## 📜 License
 
