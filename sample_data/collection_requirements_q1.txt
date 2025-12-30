@@ -1,0 +1,70 @@
+INTELLIGENCE COLLECTION REQUIREMENTS (ICR) UPDATE
+Priority Intelligence Requirements for Q1 2025
+Effective Date: January 1, 2025
+Classification: UNCLASSIFIED
+
+STANDING INFORMATION NEEDS (SINs)
+
+The following information needs remain in effect for all collection assets and analytical elements:
+
+SIN-001: Foreign Military Capabilities
+Priority: HIGH
+Description: Collect information on adversary military modernization programs, including but not limited to hypersonic weapons development, advanced submarine capabilities, and anti-satellite systems.
+Collection Discipline: SIGINT, GEOINT, OSINT
+Reporting Cadence: Weekly
+
+SIN-002: Counterterrorism - Homegrown Violent Extremism
+Priority: CRITICAL
+Description: Monitor and report on domestic radicalization pathways, attack planning indicators, and foreign terrorist organization recruitment of U.S. persons.
+Collection Discipline: HUMINT, SIGINT, OSINT
+Reporting Cadence: Daily
+
+SIN-003: Cyber Threat Actor TTPs
+Priority: HIGH
+Description: Document tactics, techniques, and procedures of nation-state cyber actors targeting U.S. critical infrastructure sectors.
+Collection Discipline: SIGINT, Cyber Intelligence
+Reporting Cadence: As collected
+
+NAMED AREA OF INTEREST (NAI) UPDATES
+
+NAI-ALPHA: Baltic Sea Region
+New requirement to monitor naval activity and troop movements in the Baltic littorals. Increased Russian Federation military exercises have been observed.
+
+NAI-BRAVO: South China Sea
+Continue surveillance of island militarization and freedom of navigation operations. Report any new construction or weapons deployments.
+
+NAI-CHARLIE: Sahel Region
+Expand collection on transnational criminal organizations and their intersection with violent extremist organizations operating in Mali, Niger, and Burkina Faso.
+
+SPECIFIC INTELLIGENCE REQUIREMENTS (SIRs)
+
+SIR-2025-001
+Question: What is the current operational status of [COUNTRY] ballistic missile submarine fleet?
+Deadline: January 15, 2025
+Requester: Strategic Command J2
+
+SIR-2025-002  
+Question: Identify any new leadership changes within the [ORGANIZATION] terrorist network hierarchy.
+Deadline: Rolling
+Requester: National Counterterrorism Center
+
+SIR-2025-003
+Question: What are the technical specifications and deployment timeline for [COUNTRY] fifth-generation fighter aircraft?
+Deadline: February 1, 2025
+Requester: Defense Intelligence Agency
+
+COLLECTION GUIDANCE
+
+1. All collection activities must be conducted in accordance with applicable laws and executive orders
+2. Minimize collection on U.S. persons unless specifically authorized
+3. Chain of custody requirements apply to all collected materials
+4. Report any potential intelligence gaps to the Collection Manager
+
+POINTS OF CONTACT
+
+Collection Manager: [REDACTED]
+Requirements Officer: [REDACTED]
+Dissemination Control: [REDACTED]
+
+Document Control Number: ICR-2025-Q1-001
+Next Review: March 31, 2025

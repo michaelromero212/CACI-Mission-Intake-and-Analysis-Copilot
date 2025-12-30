@@ -1,0 +1,16 @@
+asset_id,asset_name,category,location,classification,custodian,last_inventory,status,value_usd,notes
+AST-001,Predator UAV Simulator,Training Equipment,Building 42 Room 103,SECRET,TSgt Williams,2024-12-15,Operational,2500000,Annual maintenance completed Nov 2024
+AST-002,JWICS Terminal Set Alpha,Communications,SCIF Building 7,TOP SECRET/SCI,SSgt Martinez,2024-12-20,Operational,450000,Requires quarterly crypto update
+AST-003,Portable SIGINT Collection Kit,Intelligence Equipment,Vault A-7,SECRET,Capt Rodriguez,2024-12-01,Deployed,1800000,Currently supporting OEF operations
+AST-004,Tactical Imagery Workstation,Analysis Equipment,Intel Center,SECRET,MSgt Chen,2024-12-18,Operational,380000,Software upgrade scheduled Jan 2025
+AST-005,Mobile Command Post,Vehicles,Motor Pool Lot C,UNCLASSIFIED,SFC Johnson,2024-12-10,Maintenance,890000,Transmission repair in progress
+AST-006,Biometric Collection Device,Intel Equipment,Armory B,SECRET,SSgt Thompson,2024-12-22,Operational,125000,Firmware version 4.2.1
+AST-007,Counter-UAS System,Force Protection,Tower 3,SECRET,TSgt Brown,2024-12-14,Operational,3200000,Detection range: 15km
+AST-008,Language Translation Server,IT Infrastructure,Data Center,UNCLASSIFIED,Civ Davis,2024-12-19,Operational,95000,Supports 47 languages
+AST-009,Tactical Radio Set (AN/PRC-152),Communications,Comm Shop,SECRET,SSgt Wilson,2024-12-21,Operational,28000,Quantity: 24 units
+AST-010,Night Vision Goggles Set,Individual Equipment,Arms Room,SECRET,SFC Miller,2024-12-17,Partial Issue,156000,8 of 12 units issued
+AST-011,Encrypted Laptop Fleet,IT Equipment,IT Office,SECRET,Civ Anderson,2024-12-23,Operational,210000,35 units total - STIG compliant
+AST-012,Satellite Uplink Station,Communications,Roof Building 12,SECRET,TSgt Garcia,2024-12-11,Operational,1450000,Ku-band capability
+AST-013,Forensic Analysis Workstation,Cyber Equipment,Cyber Lab,SECRET,Capt Lee,2024-12-16,Operational,175000,EnCase and Autopsy licensed
+AST-014,Deployable Ground Station,ISR Equipment,Hangar 4,SECRET,MSgt Taylor,2024-12-08,Storage,4200000,Last deployed: Oct 2024
+AST-015,Secure Video Conference System,Communications,Conference Room A,SECRET,Civ White,2024-12-24,Operational,89000,Supports 20 concurrent connections

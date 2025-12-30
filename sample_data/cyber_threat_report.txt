@@ -1,0 +1,64 @@
+CYBER THREAT INTELLIGENCE REPORT
+Classification: UNCLASSIFIED // FOR OFFICIAL USE ONLY
+Date: December 28, 2024
+Report ID: CTI-2024-1228-001
+
+EXECUTIVE SUMMARY
+
+This report provides an analysis of emerging cyber threats targeting U.S. defense industrial base (DIB) organizations. Over the past 30 days, our threat intelligence operations have identified a significant increase in spear-phishing campaigns attributed to APT groups with suspected nation-state backing.
+
+THREAT ACTOR PROFILE
+
+Actor Designation: PHANTOM EAGLE
+Attribution Confidence: HIGH
+Suspected Origin: Eastern Europe
+Primary Objectives:
+- Intellectual property theft
+- Supply chain compromise
+- Long-term persistent access
+
+RECENT ACTIVITY
+
+Between December 1-27, 2024, PHANTOM EAGLE conducted 47 documented intrusion attempts against DIB contractors. Notable tactics include:
+
+1. Credential Harvesting: Fake Microsoft 365 login pages hosted on compromised legitimate domains
+2. Malware Delivery: ISO files containing LNK shortcuts that execute PowerShell loaders
+3. C2 Infrastructure: Use of Cloudflare Workers for command-and-control communications
+
+INDICATORS OF COMPROMISE (IOCs)
+
+Domains:
+- login-microsoftonline[.]com
+- sharepoint-auth[.]net
+- azure-security-update[.]com
+
+IP Addresses:
+- 185.234.xxx.xxx (C2 server - Germany)
+- 91.195.xxx.xxx (Staging server - Netherlands)
+
+File Hashes (SHA-256):
+- a3b8c9d4e5f6... (PowerShell loader)
+- 7f8e9d0c1b2a... (Cobalt Strike beacon)
+
+RECOMMENDED MITIGATIONS
+
+1. Implement phishing-resistant MFA across all user accounts
+2. Block ISO, LNK, and VBS attachments at email gateway
+3. Deploy EDR solutions with behavioral detection capabilities
+4. Conduct security awareness training focused on spear-phishing
+5. Monitor for connections to known C2 infrastructure
+
+RISK ASSESSMENT
+
+Current threat level for DIB organizations: HIGH
+
+The sophistication and persistence of PHANTOM EAGLE operations indicate a well-resourced threat actor with strategic objectives aligned with foreign intelligence priorities.
+
+NEXT STEPS
+
+- Continue monitoring for new TTPs and infrastructure
+- Coordinate with CISA and FBI on threat intelligence sharing
+- Update detection rules and hunting queries weekly
+
+Report Prepared By: Cyber Threat Intelligence Team
+Review Authority: Chief Information Security Officer

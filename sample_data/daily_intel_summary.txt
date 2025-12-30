@@ -1,0 +1,67 @@
+DAILY INTELLIGENCE SUMMARY (DISUM)
+Date: December 30, 2024
+Prepared By: Watch Floor, J2 Intelligence Directorate
+Classification: UNCLASSIFIED
+
+GLOBAL SITUATION OVERVIEW
+
+No significant changes to global threat posture in the past 24 hours. All combatant command areas of responsibility report routine activity with notable exceptions outlined below.
+
+INDOPACOM
+
+- Increased PLA Navy activity in the Taiwan Strait. Three destroyers and one amphibious assault ship conducted exercises 50nm from Taipei.
+- North Korea conducted another ballistic missile test from the Sohae launch facility. Missile traveled approximately 400km before landing in the Sea of Japan.
+- Assessment: Activities within expected patterns. No indication of imminent escalation.
+
+EUCOM
+
+- Russian ground forces continue defensive preparations along the border areas.
+- NATO air policing intercepted two Tu-95 Bear bombers in international airspace near Norway.
+- Assessment: Tensions remain elevated but stable. Continue enhanced ISR coverage.
+
+CENTCOM
+
+- ISIS-K propaganda output increased 15% this week, emphasizing attacks on Western targets.
+- Iranian IRGC naval forces conducted live-fire exercises in the Strait of Hormuz.
+- Assessment: Elevated threat to U.S. personnel and facilities in the region.
+
+AFRICOM
+
+- Al-Shabaab claimed responsibility for a vehicle-borne IED attack in Mogadishu, resulting in 12 casualties.
+- Wagner Group movements observed in Central African Republic and Mali.
+- Assessment: Continued instability across the Sahel region.
+
+SOUTHCOM
+
+- Venezuelan military deployed additional forces to the Essequibo border region.
+- Cocaine seizures in the Caribbean increased 22% compared to the previous month.
+- Assessment: Regional tensions over territorial disputes bear monitoring.
+
+CYBER DOMAIN
+
+- No major cyber incidents affecting U.S. critical infrastructure in the past 24 hours.
+- Patch released for critical vulnerability in popular enterprise software. Recommend immediate application.
+- Ongoing monitoring of threat actor infrastructure associated with last week's intrusions.
+
+SPACE DOMAIN
+
+- All GPS satellites operating within normal parameters.
+- Chinese satellite conducted proximity operations near a commercial communications satellite. No interference detected.
+- Space weather: Minor geomagnetic storm expected Dec 31 - Jan 1.
+
+LOOKING AHEAD (NEXT 72 HOURS)
+
+- New Year's Eve festivities present soft target opportunities globally
+- Foreign leader speeches may contain significant policy announcements  
+- Weather conditions may affect collection assets in EUCOM
+
+PRIORITY INTELLIGENCE REQUIREMENTS STATUS
+
+PIR-1 (Adversary WMD Programs): No new reporting
+PIR-2 (Terrorist Attack Planning): See CENTCOM section
+PIR-3 (Cyber Threats to Critical Infrastructure): Continuous monitoring
+PIR-4 (Foreign Influence Operations): No significant changes
+
+DISTRIBUTION: Senior Leadership, Operations Center, All Desks
+
+Next DISUM: December 31, 2024, 0600Z

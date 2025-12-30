@@ -1,0 +1,13 @@
+incident_id,date_reported,severity,category,affected_system,status,assigned_to,description,resolution
+INC-2024-001,2024-12-01,Critical,Ransomware,Finance Server,Resolved,J. Martinez,Ransomware detected on finance department file server. Initial vector was phishing email.,Isolated system and restored from backup. Enhanced email filtering deployed.
+INC-2024-002,2024-12-03,High,Data Exfiltration,HR Database,Under Investigation,S. Chen,Unusual outbound traffic detected from HR systems during off-hours.,Forensic analysis in progress. Network traffic captured for review.
+INC-2024-003,2024-12-05,Medium,Phishing,Email Gateway,Resolved,A. Johnson,Campaign targeting executives with fake DocuSign requests.,47 emails blocked. User awareness alert sent to all staff.
+INC-2024-004,2024-12-08,Low,Malware,Developer Workstation,Resolved,M. Williams,PUP detected on contractor laptop during routine scan.,Software removed. User retrained on download policies.
+INC-2024-005,2024-12-10,Critical,APT Activity,Domain Controller,Active,Incident Team,Indicators of APT presence detected. Lateral movement suspected.,Emergency response activated. External IR firm engaged.
+INC-2024-006,2024-12-12,High,Insider Threat,Cloud Storage,Under Investigation,D. Brown,Former employee accessed files after termination.,Access revoked. Legal team notified. Audit of all terminated accounts initiated.
+INC-2024-007,2024-12-15,Medium,DDoS,Public Website,Resolved,Network Team,Volumetric DDoS attack against public-facing website.,Traffic scrubbed via CDN. Attack lasted 4 hours.
+INC-2024-008,2024-12-18,High,Supply Chain,Third-Party Software,Active,Vendor Management,Vulnerability discovered in vendor-provided software component.,Patch pending from vendor. Compensating controls implemented.
+INC-2024-009,2024-12-20,Low,Policy Violation,USB Devices,Resolved,L. Davis,Unauthorized USB device connected to classified workstation.,Device confiscated. User counseled. No data loss confirmed.
+INC-2024-010,2024-12-22,Critical,Zero-Day,VPN Appliance,Active,Security Team,Exploitation attempt of unpatched VPN vulnerability.,Emergency patching in progress. IDS signatures updated.
+INC-2024-011,2024-12-24,Medium,Credential Theft,Active Directory,Under Investigation,K. Thompson,Multiple failed auth attempts from foreign IPs.,Accounts locked. Password reset enforced. MFA verification ongoing.
+INC-2024-012,2024-12-27,High,Malware,Manufacturing Systems,Active,OT Security,Malware detected in OT network segment.,Air-gapped systems isolated. ICS-CERT notified.

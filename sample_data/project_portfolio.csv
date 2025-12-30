@@ -1,0 +1,13 @@
+project_id,project_name,program,start_date,end_date,budget_usd,spent_usd,status,pm_name,risk_level,deliverables_complete,notes
+PRJ-2024-001,AI-Enabled Targeting System,DARPA OFFSET,2024-01-15,2025-06-30,12500000,8750000,On Track,Dr. Sarah Kim,Medium,7 of 12,Phase 2 milestones completed on schedule
+PRJ-2024-002,Autonomous Logistics Platform,Army Futures Command,2023-09-01,2024-12-31,8900000,8200000,At Risk,James Wellington,High,5 of 8,Supply chain issues affecting hardware delivery
+PRJ-2024-003,Secure Cloud Migration,DHA IT Modernization,2024-03-01,2025-03-01,4500000,2100000,On Track,Maria Santos,Low,4 of 10,Ahead of schedule on data migration
+PRJ-2024-004,Counter-Drone Detection,Force Protection Program,2024-06-15,2025-12-31,15000000,4500000,On Track,Col. Michael Torres,Medium,2 of 6,Prototype testing begins Q1 2025
+PRJ-2024-005,Language Translation AI,NSA Tech Transfer,2024-02-01,2024-11-30,3200000,3200000,Complete,Dr. Lisa Park,Low,8 of 8,Successfully transitioned to operations
+PRJ-2024-006,Cybersecurity Training Platform,CYBERCOM,2024-04-01,2025-04-01,2800000,1400000,On Track,Robert Chen,Low,5 of 10,User adoption exceeding targets
+PRJ-2024-007,Quantum-Resistant Encryption,NSF/DOD Joint,2024-07-01,2026-06-30,22000000,3300000,On Track,Dr. Emily Watson,High,1 of 8,Foundational research phase
+PRJ-2024-008,Predictive Maintenance System,NAVAIR,2024-01-01,2024-12-31,6700000,6100000,At Risk,Thomas Anderson,High,6 of 8,Algorithm accuracy below threshold
+PRJ-2024-009,Satellite Imagery Analysis Tool,NRO,2024-08-15,2025-08-15,9500000,2375000,On Track,Jennifer Liu,Medium,2 of 8,ML model training in progress
+PRJ-2024-010,Biometric Access Control,Pentagon Force Protection,2024-05-01,2025-02-28,1800000,1350000,On Track,David Miller,Low,7 of 9,Pilot deployment successful
+PRJ-2024-011,Supply Chain Risk Assessment,DLA Modernization,2024-09-01,2025-09-01,5200000,1040000,On Track,Karen Thompson,Medium,2 of 10,Vendor database integration ongoing
+PRJ-2024-012,Real-Time Threat Dashboard,CISA,2024-06-01,2025-06-01,4100000,2050000,On Track,Alex Rodriguez,Low,5 of 10,Beta release to select agencies
