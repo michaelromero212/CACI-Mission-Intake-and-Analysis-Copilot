@@ -25,6 +25,7 @@ class AnalysisResponse(BaseModel):
     total_tokens: int
     estimated_cost: float
     confidence_score: Optional[float]
+    processing_time_ms: Optional[int]
     created_at: datetime
     
     class Config:
@@ -101,6 +102,7 @@ async def execute_analysis(
         total_tokens=result.total_tokens,
         estimated_cost=result.estimated_cost,
         confidence_score=result.confidence_score,
+        processing_time_ms=result.processing_time_ms,
         created_at=result.created_at
     )
 
@@ -134,6 +136,7 @@ async def get_analysis(
         total_tokens=result.total_tokens,
         estimated_cost=result.estimated_cost,
         confidence_score=result.confidence_score,
+        processing_time_ms=result.processing_time_ms,
         created_at=result.created_at,
         cost_info=AnalysisCostInfo(
             input_tokens=result.input_tokens,
@@ -167,6 +170,7 @@ async def get_analysis_history(
             total_tokens=r.total_tokens,
             estimated_cost=r.estimated_cost,
             confidence_score=r.confidence_score,
+            processing_time_ms=r.processing_time_ms,
             created_at=r.created_at
         )
         for r in results

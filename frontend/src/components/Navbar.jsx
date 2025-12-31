@@ -22,14 +22,28 @@ export default function Navbar() {
                     <NavLink
                         to="/"
                         className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                        title="Keyboard: N"
                     >
                         Mission Intake
+                        <span style={{
+                            marginLeft: '0.375rem',
+                            fontSize: '0.625rem',
+                            opacity: 0.5,
+                            fontFamily: 'var(--font-mono)'
+                        }}>(N)</span>
                     </NavLink>
                     <NavLink
                         to="/history"
                         className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                        title="Keyboard: H"
                     >
                         Mission Registry
+                        <span style={{
+                            marginLeft: '0.375rem',
+                            fontSize: '0.625rem',
+                            opacity: 0.5,
+                            fontFamily: 'var(--font-mono)'
+                        }}>(H)</span>
                     </NavLink>
                 </div>
             </nav>

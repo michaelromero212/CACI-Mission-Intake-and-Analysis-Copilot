@@ -49,6 +49,9 @@ class AnalysisResult(Base):
     # Confidence indicator (heuristic-based)
     confidence_score = Column(Float, nullable=True)
     
+    # Processing time in milliseconds
+    processing_time_ms = Column(Integer, nullable=True)
+    
     created_at = Column(DateTime, default=datetime.utcnow)
     
     # Relationships

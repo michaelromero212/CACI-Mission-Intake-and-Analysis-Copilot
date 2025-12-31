@@ -17,6 +17,7 @@ export default function AnalysisCard({ analysis }) {
         total_tokens,
         estimated_cost,
         llm_model_used,
+        processing_time_ms,
         created_at
     } = analysis;
 
@@ -100,6 +101,16 @@ export default function AnalysisCard({ analysis }) {
                         model: llm_model_used
                     }}
                 />
+                {processing_time_ms && (
+                    <div style={{
+                        marginTop: 'var(--spacing-sm)',
+                        fontSize: '0.8125rem',
+                        color: 'var(--text-secondary)',
+                        fontFamily: 'var(--font-mono)'
+                    }}>
+                        ⏱️ Processing time: <strong>{(processing_time_ms / 1000).toFixed(1)}s</strong>
+                    </div>
+                )}
             </div>
 
             {/* Timestamp */}

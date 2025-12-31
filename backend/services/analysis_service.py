@@ -46,6 +46,10 @@ async def run_analysis(
     try:
         # Import here to avoid circular imports
         from ai.analyzer import analyze_content
+        import time
+        
+        # Track processing time
+        start_time = time.time()
         
         # Run analysis
         analysis_data = await analyze_content(
@@ -53,6 +57,9 @@ async def run_analysis(
             llm_client=llm_client,
             rag_service=rag_service
         )
+        
+        # Calculate processing time
+        processing_time_ms = int((time.time() - start_time) * 1000)
         
         # Create analysis result
         result = AnalysisResult(
@@ -66,7 +73,8 @@ async def run_analysis(
             output_tokens=analysis_data.get("output_tokens", 0),
             total_tokens=analysis_data.get("total_tokens", 0),
             estimated_cost=analysis_data.get("estimated_cost", 0.0),
-            confidence_score=analysis_data.get("confidence_score", 0.75)
+            confidence_score=analysis_data.get("confidence_score", 0.75),
+            processing_time_ms=processing_time_ms
         )
         
         session.add(result)

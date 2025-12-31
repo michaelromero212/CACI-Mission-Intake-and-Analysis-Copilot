@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FileUploader from '../components/FileUploader';
 import TextInput from '../components/TextInput';
@@ -14,6 +14,17 @@ export default function MissionIntake() {
     const [error, setError] = useState(null);
     const [activeTab, setActiveTab] = useState('file'); // 'file' or 'text'
 
+    // Auto-analyze toggle with localStorage persistence
+    const [autoAnalyze, setAutoAnalyze] = useState(() => {
+        const saved = localStorage.getItem('autoAnalyze');
+        return saved === 'true';
+    });
+
+    // Persist auto-analyze preference
+    useEffect(() => {
+        localStorage.setItem('autoAnalyze', autoAnalyze.toString());
+    }, [autoAnalyze]);
+
     const handleFileSelect = (file) => {
         setSelectedFile(file);
         setError(null);
@@ -28,6 +39,16 @@ export default function MissionIntake() {
         try {
             // Upload the file
             const mission = await missionsApi.uploadFile(selectedFile);
+
+            // Auto-analyze if enabled
+            if (autoAnalyze) {
+                try {
+                    await analysisApi.execute(mission.mission_id, true);
+                } catch (analysisErr) {
+                    console.warn('Auto-analysis failed:', analysisErr);
+                    // Continue to navigation even if analysis fails
+                }
+            }
 
             // Navigate to analysis page
             navigate(`/analysis/${mission.mission_id}`);
@@ -46,6 +67,16 @@ export default function MissionIntake() {
         try {
             // Submit text
             const mission = await missionsApi.submitText(content, sourceLabel);
+
+            // Auto-analyze if enabled
+            if (autoAnalyze) {
+                try {
+                    await analysisApi.execute(mission.mission_id, true);
+                } catch (analysisErr) {
+                    console.warn('Auto-analysis failed:', analysisErr);
+                    // Continue to navigation even if analysis fails
+                }
+            }
 
             // Navigate to analysis page
             navigate(`/analysis/${mission.mission_id}`);
@@ -80,6 +111,61 @@ export default function MissionIntake() {
                 >
                     📝 Text Input
                 </button>
+            </div>
+
+            {/* Auto-Analyze Toggle */}
+            <div className="card mb-lg" style={{
+                padding: 'var(--spacing-md)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                background: autoAnalyze ? 'rgba(46, 125, 50, 0.05)' : 'var(--bg-secondary)'
+            }}>
+                <div>
+                    <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>
+                        🚀 Auto-Analyze on Upload
+                    </div>
+                    <div className="text-muted" style={{ fontSize: '0.8125rem' }}>
+                        Automatically run AI analysis after document upload
+                    </div>
+                </div>
+                <label style={{
+                    position: 'relative',
+                    display: 'inline-block',
+                    width: '48px',
+                    height: '26px',
+                    cursor: 'pointer'
+                }}>
+                    <input
+                        type="checkbox"
+                        checked={autoAnalyze}
+                        onChange={(e) => setAutoAnalyze(e.target.checked)}
+                        style={{ opacity: 0, width: 0, height: 0 }}
+                    />
+                    <span style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: autoAnalyze ? 'var(--color-success)' : 'var(--border-color)',
+                        borderRadius: '26px',
+                        transition: 'background-color 0.2s'
+                    }}>
+                        <span style={{
+                            position: 'absolute',
+                            content: '""',
+                            height: '20px',
+                            width: '20px',
+                            left: autoAnalyze ? '25px' : '3px',
+                            bottom: '3px',
+                            backgroundColor: 'white',
+                            borderRadius: '50%',
+                            transition: 'left 0.2s',
+                            boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+                        }} />
+                    </span>
+                </label>
             </div>
 
             {/* Error Display */}

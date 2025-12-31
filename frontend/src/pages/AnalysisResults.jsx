@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import AnalysisCard from '../components/AnalysisCard';
 import { missionsApi, analysisApi, reviewsApi } from '../api';
+import { exportAnalysisToMarkdown } from '../utils/exportUtils';
 
 /**
  * Analysis Results page - displays mission details and AI analysis.
@@ -147,9 +148,20 @@ export default function AnalysisResults() {
                         </span>
                     </div>
                 </div>
-                <button className="btn btn-secondary" onClick={() => navigate('/history')}>
-                    View All Missions
-                </button>
+                <div className="flex gap-sm">
+                    {analysis && (
+                        <button
+                            className="btn btn-secondary"
+                            onClick={() => exportAnalysisToMarkdown(mission, analysis, review)}
+                            title="Download analysis report as Markdown"
+                        >
+                            📥 Export
+                        </button>
+                    )}
+                    <button className="btn btn-secondary" onClick={() => navigate('/history')}>
+                        View All Missions
+                    </button>
+                </div>
             </div>
 
             {/* Error Display */}
