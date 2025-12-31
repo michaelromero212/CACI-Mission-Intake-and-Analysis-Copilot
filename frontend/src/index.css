@@ -1064,18 +1064,390 @@ code,
 }
 
 /* === Responsive === */
-@media (max-width: 768px) {
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+/* Chart Container Styles - Critical for Plotly */
+.card .js-plotly-plot,
+.card .plotly {
+  position: relative !important;
+}
+
+.card .js-plotly-plot .plot-container {
+  position: relative !important;
+}
+
+/* Ensure cards properly contain their content */
+.card {
+  overflow: hidden;
+}
+
+/* Chart cards need minimum height on mobile */
+.grid .card {
+  min-height: 320px;
+}
+
+/* Chart card specific styling */
+.chart-card {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card .card-header {
+  flex-shrink: 0;
+}
+
+.chart-card .js-plotly-plot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Additional Margin Utilities */
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+
+/* Large Screens (1400px+) */
+@media (min-width: 1400px) {
+  .main-content {
+    padding: var(--space-xl);
+    max-width: 1600px;
+  }
+}
+
+/* Desktop (1024px - 1399px) */
+@media (max-width: 1399px) {
+  .main-content {
+    padding: var(--space-lg);
+    max-width: 100%;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
   .main-content {
     padding: var(--space-md);
   }
 
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .stat-card {
+    padding: var(--space-sm);
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .navbar-nav {
+    gap: 0;
+  }
+
+  .nav-link {
+    padding: var(--space-sm);
+    font-size: 0.75rem;
+  }
+
+  /* Hide keyboard hints on tablet */
+  .nav-link span[style*="font-mono"] {
+    display: none;
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile (max 767px) */
+@media (max-width: 767px) {
+  .main-content {
+    padding: var(--space-sm);
+  }
+
+  /* Stack navbar */
   .navbar {
     padding: var(--space-sm);
     flex-wrap: wrap;
     gap: var(--space-sm);
   }
 
+  .navbar-brand {
+    font-size: 0.8125rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-brand .logo-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.875rem;
+  }
+
+  .navbar-nav {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .nav-link {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Hide keyboard hints on mobile */
+  .nav-link span {
+    display: none !important;
+  }
+
+  /* 2-column stats on mobile */
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xs);
+  }
+
+  .stat-card {
+    padding: var(--space-sm);
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.5625rem;
+  }
+
+  /* Stack grids */
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* Cards */
+  .card {
+    padding: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .card-header {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .card-title {
+    font-size: 0.875rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.75rem;
+  }
+
+  .btn-sm {
+    padding: var(--space-xs);
+    font-size: 0.625rem;
+  }
+
+  /* Headers */
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  h2 {
+    font-size: 1.125rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .page-header {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+  }
+
+  .page-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .page-header p {
+    font-size: 0.75rem;
+  }
+
+  /* Tables - horizontal scroll */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Mission cards */
+  .mission-card {
+    padding: var(--space-sm);
+  }
+
+  .mission-card-meta {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  /* File upload */
+  .file-upload {
+    padding: var(--space-md);
+  }
+
+  .file-upload-icon {
+    font-size: 1.5rem;
+  }
+
+  /* Text inputs */
+  .form-textarea {
+    min-height: 100px;
+  }
+
+  /* Hide footer hint on mobile */
+  footer span[style*="cursor: pointer"] {
+    display: none;
+  }
+
+  /* Analysis sections */
+  .analysis-section {
+    padding: var(--space-sm);
+  }
+
+  .analysis-section-title {
+    font-size: 0.625rem;
+  }
+
+  .analysis-content {
+    font-size: 0.8125rem;
+  }
+
+  /* Entity chips */
+  .entity-chip {
+    padding: var(--space-xs);
+    font-size: 0.6875rem;
+  }
+
+  .entity-type {
+    font-size: 0.5rem;
+  }
+
+  /* Cost display */
+  .cost-display {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .cost-item .cost-value {
+    font-size: 0.875rem;
+  }
+
+  .cost-item .cost-label {
+    font-size: 0.5rem;
+  }
+
+  /* Badges */
+  .badge {
+    padding: 0.125rem var(--space-xs);
+    font-size: 0.5625rem;
+  }
+
+  .risk-badge {
+    padding: 0.125rem var(--space-xs);
+    font-size: 0.5625rem;
+  }
+}
+
+/* Extra small screens (max 480px) */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .navbar-brand span {
+    font-size: 0.75rem;
+  }
+
+  /* Hide emoji indicators on very small screens */
+  .nav-link:not(.navbar-brand) {
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+
+  .cost-display {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Print styles */
+@media print {
+
+  .navbar,
+  .classification-banner,
+  footer,
+  .btn {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
   }
 }

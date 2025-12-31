@@ -8,6 +8,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export const SHORTCUTS = [
     { key: 'n', description: 'New Mission', path: '/' },
     { key: 'h', description: 'Mission History', path: '/history' },
+    { key: 'd', description: 'Dashboard', path: '/dashboard' },
     { key: '?', description: 'Show Keyboard Shortcuts', action: 'showHelp' },
 ];
 
@@ -51,6 +52,10 @@ export function useKeyboardShortcuts({ onShowHelp, onAnalyze } = {}) {
             case 'h':
                 event.preventDefault();
                 navigate('/history');
+                break;
+            case 'd':
+                event.preventDefault();
+                navigate('/dashboard');
                 break;
             case 'a':
                 // Only trigger on analysis pages

@@ -45,6 +45,19 @@ export default function Navbar() {
                             fontFamily: 'var(--font-mono)'
                         }}>(H)</span>
                     </NavLink>
+                    <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                        title="Keyboard: D"
+                    >
+                        📊 Dashboard
+                        <span style={{
+                            marginLeft: '0.375rem',
+                            fontSize: '0.625rem',
+                            opacity: 0.5,
+                            fontFamily: 'var(--font-mono)'
+                        }}>(D)</span>
+                    </NavLink>
                 </div>
             </nav>
         </>

@@ -10,7 +10,7 @@ import logging
 
 from config import get_settings
 from db import init_db
-from api import missions_router, analysis_router, reviews_router
+from api import missions_router, analysis_router, reviews_router, analytics_router
 
 # Configure logging
 logging.basicConfig(
@@ -69,6 +69,7 @@ app.add_middleware(
 app.include_router(missions_router)
 app.include_router(analysis_router)
 app.include_router(reviews_router)
+app.include_router(analytics_router)
 
 
 @app.get("/")
@@ -82,7 +83,8 @@ async def root():
         "endpoints": {
             "missions": "/api/missions",
             "analysis": "/api/analysis",
-            "reviews": "/api/reviews"
+            "reviews": "/api/reviews",
+            "analytics": "/api/analytics"
         }
     }
 

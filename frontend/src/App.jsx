@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import MissionIntake from './pages/MissionIntake';
 import AnalysisResults from './pages/AnalysisResults';
 import MissionHistory from './pages/MissionHistory';
+import Dashboard from './pages/Dashboard';
 import KeyboardShortcutsModal from './components/KeyboardShortcutsModal';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import './index.css';
@@ -39,6 +40,7 @@ function AppContent() {
           <Route path="/" element={<MissionIntake />} />
           <Route path="/analysis/:missionId" element={<AnalysisResults />} />
           <Route path="/history" element={<MissionHistory />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
 

@@ -98,4 +98,47 @@ export const healthCheck = async () => {
     return response.data;
 };
 
+// Analytics endpoints
+export const analyticsApi = {
+    // Get summary statistics
+    getSummary: async () => {
+        const response = await api.get('/api/analytics/summary');
+        return response.data;
+    },
+
+    // Get risk distribution
+    getRiskDistribution: async () => {
+        const response = await api.get('/api/analytics/risk-distribution');
+        return response.data;
+    },
+
+    // Get trends over time
+    getTrends: async (days = 30) => {
+        const response = await api.get('/api/analytics/trends', {
+            params: { days },
+        });
+        return response.data;
+    },
+
+    // Get entity type breakdown
+    getEntityBreakdown: async () => {
+        const response = await api.get('/api/analytics/entity-breakdown');
+        return response.data;
+    },
+
+    // Get review status counts
+    getReviewStatus: async () => {
+        const response = await api.get('/api/analytics/review-status');
+        return response.data;
+    },
+
+    // Get high risk missions
+    getHighRiskMissions: async (limit = 5) => {
+        const response = await api.get('/api/analytics/high-risk-missions', {
+            params: { limit },
+        });
+        return response.data;
+    },
+};
+
 export default api;
