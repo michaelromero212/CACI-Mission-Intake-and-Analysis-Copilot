@@ -67,7 +67,11 @@ export default function AnalysisCard({ analysis }) {
                     <div className="analysis-section-title">Extracted Entities</div>
                     <div className="entity-list">
                         {extracted_entities.map((entity, idx) => (
-                            <div key={idx} className="entity-chip">
+                            <div
+                                key={idx}
+                                className="entity-chip"
+                                data-type={entity.type?.toLowerCase()}
+                            >
                                 <span className="entity-type">{entity.type}</span>
                                 <span>{entity.name}</span>
                             </div>

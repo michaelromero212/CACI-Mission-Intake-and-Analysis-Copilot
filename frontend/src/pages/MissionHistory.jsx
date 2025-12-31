@@ -107,15 +107,58 @@ export default function MissionHistory() {
 
             {/* Empty State */}
             {!isLoading && missions.length === 0 && (
-                <div className="card" style={{ textAlign: 'center', padding: '2rem' }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📭</div>
-                    <h3>No Missions Yet</h3>
-                    <p className="text-muted" style={{ marginBottom: '1rem' }}>
-                        Upload a document or submit text to get started.
+                <div className="card" style={{
+                    textAlign: 'center',
+                    padding: 'var(--space-xl)',
+                    background: 'linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%)'
+                }}>
+                    <div style={{
+                        fontSize: '4rem',
+                        marginBottom: 'var(--space-md)',
+                        opacity: 0.8
+                    }}>🎯</div>
+                    <h2 style={{ marginBottom: 'var(--space-sm)', color: 'var(--caci-navy)' }}>
+                        Ready to Analyze
+                    </h2>
+                    <p className="text-muted" style={{
+                        marginBottom: 'var(--space-lg)',
+                        maxWidth: '400px',
+                        margin: '0 auto var(--space-lg)'
+                    }}>
+                        Upload mission documents (PDF, CSV, TXT) or submit free text
+                        for AI-assisted analysis, entity extraction, and risk classification.
                     </p>
-                    <button className="btn btn-primary" onClick={() => navigate('/')}>
-                        Create First Mission
+                    <button
+                        className="btn btn-accent btn-lg"
+                        onClick={() => navigate('/')}
+                        style={{ padding: 'var(--space-sm) var(--space-xl)' }}
+                    >
+                        🚀 Create First Mission
                     </button>
+                    <div style={{
+                        marginTop: 'var(--space-xl)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: 'var(--space-lg)',
+                        flexWrap: 'wrap'
+                    }}>
+                        <div style={{ textAlign: 'center', opacity: 0.7 }}>
+                            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>📄</div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>PDF</div>
+                        </div>
+                        <div style={{ textAlign: 'center', opacity: 0.7 }}>
+                            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>📊</div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>CSV</div>
+                        </div>
+                        <div style={{ textAlign: 'center', opacity: 0.7 }}>
+                            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>📝</div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>TXT</div>
+                        </div>
+                        <div style={{ textAlign: 'center', opacity: 0.7 }}>
+                            <div style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>💬</div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Free Text</div>
+                        </div>
+                    </div>
                 </div>
             )}
 

@@ -179,17 +179,33 @@ export default function AnalysisResults() {
                 <div>
                     <div className="card mb-lg">
                         <div className="card-header">
-                            <h3 className="card-title">Mission Content</h3>
+                            <h3 className="card-title">📄 Mission Content</h3>
+                            <button
+                                className="btn btn-sm btn-secondary"
+                                onClick={() => {
+                                    navigator.clipboard.writeText(mission.normalized_content || '');
+                                    // Simple feedback
+                                    const btn = document.activeElement;
+                                    const originalText = btn.textContent;
+                                    btn.textContent = '✓ Copied!';
+                                    setTimeout(() => btn.textContent = originalText, 1500);
+                                }}
+                                title="Copy to clipboard"
+                            >
+                                📋 Copy
+                            </button>
                         </div>
                         <div style={{
                             maxHeight: '400px',
                             overflow: 'auto',
                             background: 'var(--bg-secondary)',
-                            padding: 'var(--spacing-md)',
-                            borderRadius: 'var(--radius-md)',
+                            padding: 'var(--space-md)',
+                            borderRadius: 'var(--radius-sm)',
                             fontFamily: 'var(--font-mono)',
-                            fontSize: '0.875rem',
-                            whiteSpace: 'pre-wrap'
+                            fontSize: '0.8125rem',
+                            lineHeight: '1.6',
+                            whiteSpace: 'pre-wrap',
+                            border: '1px solid var(--border-color)'
                         }}>
                             {mission.normalized_content || 'No content available'}
                         </div>
