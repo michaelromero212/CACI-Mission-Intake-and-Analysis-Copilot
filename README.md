@@ -21,24 +21,24 @@ This lightweight accelerator demonstrates rapid time-to-value by ingesting messy
 ## 📸 Screenshots
 
 ### Mission Intake
-Upload PDF, CSV, or TXT documents via drag-and-drop, or submit free-text content. Features classification banner for government environment styling.
+Upload documents (PDF, CSV, TXT) via drag-and-drop or submit free-text. Features auto-analyze toggle for streamlined processing.
 
 ![Mission Intake](docs/screenshots/mission_intake.jpg)
 
 ### Mission Registry
-Compact table view of all ingested missions with inline stats, status badges, and quick actions. Designed for data-dense analyst workflows.
+Track all ingested missions with status badges, document types, and quick actions. Real-time stats show total, analyzed, and pending counts.
 
 ![Mission Registry](docs/screenshots/mission_registry.jpg)
 
-### Mission Detail & Analysis
-View ingested document content alongside AI-generated analysis including summary, risk classification, and extracted entities.
-
-![Mission Detail](docs/screenshots/mission_detail.jpg)
-
-### Analysis Results & Cost Transparency
-Full AI analysis with token usage, estimated costs, confidence scores, and human-in-the-loop analyst review workflow.
+### Analysis Results
+View AI-generated summaries, risk classification, and extracted entities alongside the original document. Includes cost transparency with token usage and processing time.
 
 ![Analysis Results](docs/screenshots/analysis_results.jpg)
+
+### Executive Dashboard
+Clean, scannable overview for leadership. Key metrics at a glance, attention items highlighted, and recent activity tracking.
+
+![Dashboard](docs/screenshots/dashboard.png)
 
 ## 🏗️ Architecture
 

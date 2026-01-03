@@ -1100,25 +1100,305 @@ code,
 
 /* Chart cards need minimum height on mobile */
 .grid .card {
-  min-height: 320px;
+  min-height: auto;
 }
 
-/* Chart card specific styling */
-.chart-card {
-  min-height: 360px;
+/* ========================================
+   EXECUTIVE DASHBOARD STYLES
+   Clean, scannable design for leadership
+   ======================================== */
+
+.executive-dashboard {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-lg);
 }
 
-.chart-card .card-header {
+.dashboard-header h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.dashboard-loading {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.dashboard-loading p {
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+
+/* Empty State */
+.empty-state-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  max-width: 400px;
+  margin: var(--space-xl) auto;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.6;
+}
+
+.empty-state-card h2 {
+  color: var(--caci-navy);
+  margin-bottom: var(--space-sm);
+}
+
+.empty-state-card p {
+  color: var(--text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+/* Key Metrics Row */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--caci-navy);
+  font-family: var(--font-mono);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-success .metric-value {
+  color: var(--color-success);
+}
+
+.metric-warning .metric-value {
+  color: var(--color-warning);
+}
+
+/* Status Banner */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.875rem;
+  margin-bottom: var(--space-lg);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
   flex-shrink: 0;
 }
 
-.chart-card .js-plotly-plot {
-  flex: 1;
+.status-good {
+  background: var(--color-success);
+  box-shadow: 0 0 6px var(--color-success);
+}
+
+.status-warning {
+  background: var(--color-warning);
+  box-shadow: 0 0 6px var(--color-warning);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.dashboard-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.section-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Attention List */
+.attention-list,
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.attention-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--bg-secondary);
+}
+
+.attention-item:last-child {
+  border-bottom: none;
+}
+
+.attention-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.attention-source {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+/* Activity List */
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--bg-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  margin: 0 calc(-1 * var(--space-sm));
+  padding-left: var(--space-sm);
+  padding-right: var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+.activity-item:hover {
+  background: var(--bg-secondary);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity-source {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.activity-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* Empty Section */
+.empty-section {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-sm);
+  color: var(--text-muted);
+  padding: var(--space-lg);
+  font-size: 0.875rem;
+}
+
+.success-icon {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+/* Quick Stats Footer */
+.quick-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-xl);
+  padding: var(--space-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+.quick-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.quick-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quick-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Responsive Executive Dashboard */
+@media (max-width: 767px) {
+  .metrics-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .metric-card {
+    padding: var(--space-md);
+  }
+
+  .metric-value {
+    font-size: 2rem;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-stats {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
 }
 
 /* Additional Margin Utilities */
