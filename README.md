@@ -53,6 +53,7 @@ Clean, scannable overview for leadership. Key metrics at a glance, attention ite
                   ┌────────────┐  ┌────────────┐
                   │ Hugging    │  │ FAISS      │
                   │ Face API   │  │ (RAG)      │
+                  │ (Llama 3.1)│  │            │
                   └────────────┘  └────────────┘
 ```
 
@@ -81,6 +82,11 @@ See [docs/architecture.md](docs/architecture.md) for detailed component diagrams
 - Analyst review workflow
 - Approval/rejection with notes
 - All AI content clearly labeled
+
+### AI Status Monitoring
+- Real-time connection status indicator in navbar
+- Shows model name, latency, and connection health
+- Auto-refreshes every 30 seconds
 
 ## 🚀 Quick Start
 
@@ -155,6 +161,18 @@ echo "HUGGINGFACE_API_KEY=hf_your_key_here" > backend/.env
 ```
 
 Without an API key, the app still works for document ingestion and storage.
+
+### Model Configuration
+
+The default model is `meta-llama/Llama-3.1-8B-Instruct`. To use a different model:
+
+```bash
+# In backend/.env
+HUGGINGFACE_API_KEY=hf_your_key_here
+HUGGINGFACE_MODEL=meta-llama/Llama-3.1-8B-Instruct
+```
+
+The application uses HuggingFace's OpenAI-compatible Inference API (`router.huggingface.co`).
 
 ## 📁 Repository Structure
 
