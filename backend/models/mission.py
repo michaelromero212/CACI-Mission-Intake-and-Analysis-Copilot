@@ -1,7 +1,7 @@
 """
 Mission model - stores ingested mission records.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, String, DateTime, Text, JSON
 from sqlalchemy.orm import relationship
 import uuid
@@ -41,7 +41,7 @@ class Mission(Base):
     source_label = Column(String(255), nullable=True)
     raw_content = Column(Text, nullable=True)
     normalized_content = Column(Text, nullable=True)
-    ingestion_timestamp = Column(DateTime, default=datetime.utcnow)
+    ingestion_timestamp = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     status = Column(String(20), default="pending")
     mission_metadata = Column(JSON, default=dict)  # Renamed to avoid SQLAlchemy reserved name
     error_message = Column(Text, nullable=True)

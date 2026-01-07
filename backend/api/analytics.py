@@ -72,17 +72,21 @@ async def get_analytics_summary(
     total_result = await session.execute(total_query)
     total_missions = total_result.scalar() or 0
     
-    analyzed_query = select(func.count(Mission.mission_id)).where(Mission.status == 'ANALYZED')
+    analyzed_query = select(func.count(Mission.mission_id)).where(
+        func.lower(Mission.status) == 'analyzed'
+    )
     analyzed_result = await session.execute(analyzed_query)
     total_analyzed = analyzed_result.scalar() or 0
     
     pending_query = select(func.count(Mission.mission_id)).where(
-        Mission.status.in_(['PENDING', 'INGESTED', 'ANALYZING'])
+        func.lower(Mission.status).in_(['pending', 'ingested', 'analyzing'])
     )
     pending_result = await session.execute(pending_query)
     total_pending = pending_result.scalar() or 0
     
-    error_query = select(func.count(Mission.mission_id)).where(Mission.status == 'ERROR')
+    error_query = select(func.count(Mission.mission_id)).where(
+        func.lower(Mission.status) == 'error'
+    )
     error_result = await session.execute(error_query)
     total_errors = error_result.scalar() or 0
     
@@ -365,7 +369,7 @@ async def get_high_risk_missions(
         
         missions.append(HighRiskMission(
             mission_id=str(mission.mission_id),
-            source_label=mission.source_label or 'Unknown',
+            source_label=mission.source_label or mission.filename or 'Unknown',
             risk_level=analysis.risk_level.upper() if analysis.risk_level else 'UNKNOWN',
             summary=summary,
             ingestion_timestamp=mission.ingestion_timestamp.strftime('%Y-%m-%d %H:%M'),

@@ -141,4 +141,13 @@ export const analyticsApi = {
     },
 };
 
+// AI Status endpoints
+export const aiApi = {
+    // Get AI model connection status
+    getStatus: async () => {
+        const response = await api.get('/api/ai/status');
+        return response.data;
+    },
+};
+
 export default api;

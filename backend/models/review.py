@@ -1,7 +1,7 @@
 """
 Analyst review model - stores human-in-the-loop feedback.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, Boolean, DateTime, Text, String, ForeignKey
 from sqlalchemy.orm import relationship
 import uuid
@@ -24,7 +24,7 @@ class AnalystReview(Base):
     
     analyst_notes = Column(Text, nullable=True)
     approved = Column(Boolean, default=False)
-    reviewed_at = Column(DateTime, default=datetime.utcnow)
+    reviewed_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     
     # Relationships
     mission = relationship("Mission", back_populates="reviews")

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { analyticsApi, missionsApi } from '../api';
 
@@ -14,11 +14,7 @@ export default function Dashboard() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        loadDashboardData();
-    }, []);
-
-    const loadDashboardData = async () => {
+    const loadDashboardData = useCallback(async () => {
         setIsLoading(true);
         setError(null);
 
@@ -46,7 +42,11 @@ export default function Dashboard() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        loadDashboardData();
+    }, [loadDashboardData]);
 
     const getStatusBadge = (status) => {
         const statusMap = {
@@ -190,7 +190,7 @@ export default function Dashboard() {
                                             onClick={() => navigate(`/analysis/${mission.mission_id}`)}
                                         >
                                             <div className="activity-info">
-                                                <span className="activity-source">{mission.source_label || 'Untitled'}</span>
+                                                <span className="activity-source">{mission.source_label || mission.filename || 'Untitled'}</span>
                                                 <span className="activity-date">{formatDate(mission.ingestion_timestamp)}</span>
                                             </div>
                                             {getStatusBadge(mission.status)}

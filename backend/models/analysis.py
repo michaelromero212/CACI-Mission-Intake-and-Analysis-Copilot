@@ -1,7 +1,7 @@
 """
 Analysis result model - stores AI analysis outputs.
 """
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import Column, String, DateTime, Text, JSON, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 import uuid
@@ -52,7 +52,7 @@ class AnalysisResult(Base):
     # Processing time in milliseconds
     processing_time_ms = Column(Integer, nullable=True)
     
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     
     # Relationships
     mission = relationship("Mission", back_populates="analysis_results")

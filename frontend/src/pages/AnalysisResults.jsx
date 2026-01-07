@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import AnalysisCard from '../components/AnalysisCard';
 import { missionsApi, analysisApi, reviewsApi } from '../api';
@@ -22,11 +22,7 @@ export default function AnalysisResults() {
     const [reviewNotes, setReviewNotes] = useState('');
     const [isSubmittingReview, setIsSubmittingReview] = useState(false);
 
-    useEffect(() => {
-        loadMissionData();
-    }, [missionId]);
-
-    const loadMissionData = async () => {
+    const loadMissionData = useCallback(async () => {
         setIsLoading(true);
         setError(null);
 
@@ -58,7 +54,11 @@ export default function AnalysisResults() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [missionId]);
+
+    useEffect(() => {
+        loadMissionData();
+    }, [loadMissionData]);
 
     const handleRunAnalysis = async () => {
         setIsAnalyzing(true);

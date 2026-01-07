@@ -4,7 +4,6 @@ Hugging Face LLM client with cost tracking.
 import httpx
 import logging
 from typing import Dict, Any, Optional
-from functools import lru_cache
 from pathlib import Path
 
 from config import get_settings
@@ -36,7 +35,8 @@ class HuggingFaceLLMClient:
     def __init__(self, api_key: str = None, model: str = None):
         self.api_key = api_key or settings.huggingface_api_key
         self.model = model or settings.huggingface_model
-        self.base_url = f"https://api-inference.huggingface.co/models/{self.model}"
+        # Use the new OpenAI-compatible Inference Providers API
+        self.base_url = "https://router.huggingface.co/v1/chat/completions"
         self.total_tokens_used = 0
         self.total_requests = 0
         
@@ -47,7 +47,7 @@ class HuggingFaceLLMClient:
         temperature: float = 0.7
     ) -> Dict[str, Any]:
         """
-        Generate text using Hugging Face Inference API.
+        Generate text using Hugging Face Inference API (OpenAI-compatible).
         
         Returns dict with:
         - text: Generated text
@@ -60,13 +60,14 @@ class HuggingFaceLLMClient:
             "Content-Type": "application/json"
         }
         
+        # Use OpenAI-compatible chat completions format
         payload = {
-            "inputs": prompt,
-            "parameters": {
-                "max_new_tokens": max_tokens,
-                "temperature": temperature,
-                "return_full_text": False
-            }
+            "model": self.model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "max_tokens": max_tokens,
+            "temperature": temperature
         }
         
         # Estimate input tokens (rough approximation: ~4 chars per token)
@@ -83,14 +84,16 @@ class HuggingFaceLLMClient:
                 if response.status_code == 200:
                     result = response.json()
                     
-                    # Handle different response formats
-                    if isinstance(result, list) and len(result) > 0:
-                        generated_text = result[0].get("generated_text", "")
+                    # Handle OpenAI-compatible response format
+                    if "choices" in result and len(result["choices"]) > 0:
+                        generated_text = result["choices"][0].get("message", {}).get("content", "")
                     else:
                         generated_text = str(result)
                     
-                    # Estimate output tokens
-                    output_tokens = len(generated_text) // 4
+                    # Use actual token counts from response if available
+                    usage = result.get("usage", {})
+                    input_tokens = usage.get("prompt_tokens", input_tokens)
+                    output_tokens = usage.get("completion_tokens", len(generated_text) // 4)
                     
                     self.total_tokens_used += input_tokens + output_tokens
                     self.total_requests += 1
@@ -116,8 +119,29 @@ class HuggingFaceLLMClient:
                         "error": error_msg
                     }
                     
-        except Exception as e:
+        except httpx.TimeoutException as e:
+            logger.error(f"LLM request timed out: {str(e)}")
+            return {
+                "text": "[AI generation failed: Request timed out]",
+                "input_tokens": input_tokens,
+                "output_tokens": 0,
+                "total_tokens": input_tokens,
+                "model": self.model,
+                "error": f"Timeout: {str(e)}"
+            }
+        except httpx.RequestError as e:
             logger.error(f"LLM request failed: {str(e)}")
+            return {
+                "text": f"[AI generation failed: Network error]",
+                "input_tokens": input_tokens,
+                "output_tokens": 0,
+                "total_tokens": input_tokens,
+                "model": self.model,
+                "error": f"Network error: {str(e)}"
+            }
+        except Exception as e:
+            # Catch-all for unexpected errors
+            logger.error(f"Unexpected LLM error: {str(e)}")
             return {
                 "text": f"[AI generation failed: {str(e)}]",
                 "input_tokens": input_tokens,
@@ -134,6 +158,86 @@ class HuggingFaceLLMClient:
             "total_requests": self.total_requests,
             "model": self.model
         }
+    
+    async def test_connection(self) -> Dict[str, Any]:
+        """
+        Test connection to Hugging Face API.
+        
+        Returns dict with:
+        - connected: Whether the API is reachable
+        - model: Model being used
+        - response_time_ms: Response time in milliseconds
+        - error: Error message if connection failed
+        """
+        import time
+        
+        if not self.api_key:
+            return {
+                "connected": False,
+                "model": self.model,
+                "response_time_ms": 0,
+                "error": "No API key configured"
+            }
+        
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        # Use OpenAI-compatible chat completions format for testing
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "user", "content": "Hi"}
+            ],
+            "max_tokens": 1
+        }
+        
+        start_time = time.time()
+        
+        try:
+            async with httpx.AsyncClient(timeout=30.0) as client:
+                response = await client.post(
+                    self.base_url,
+                    headers=headers,
+                    json=payload
+                )
+                
+                response_time_ms = int((time.time() - start_time) * 1000)
+                
+                if response.status_code == 200:
+                    return {
+                        "connected": True,
+                        "model": self.model,
+                        "response_time_ms": response_time_ms,
+                        "error": None
+                    }
+                elif response.status_code == 503:
+                    # Model is loading - still counts as connected
+                    return {
+                        "connected": True,
+                        "model": self.model,
+                        "response_time_ms": response_time_ms,
+                        "error": "Model is loading, please wait",
+                        "loading": True
+                    }
+                else:
+                    error_text = response.text
+                    return {
+                        "connected": False,
+                        "model": self.model,
+                        "response_time_ms": response_time_ms,
+                        "error": f"API error: {response.status_code} - {error_text[:100]}"
+                    }
+                    
+        except Exception as e:
+            response_time_ms = int((time.time() - start_time) * 1000)
+            return {
+                "connected": False,
+                "model": self.model,
+                "response_time_ms": response_time_ms,
+                "error": str(e)
+            }
 
 
 # Global client instance

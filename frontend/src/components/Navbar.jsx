@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import AIStatusIndicator from './AIStatusIndicator';
 
 /**
  * Main navigation component with CACI branding.
@@ -58,6 +59,10 @@ export default function Navbar() {
                             fontFamily: 'var(--font-mono)'
                         }}>(D)</span>
                     </NavLink>
+                </div>
+
+                <div className="navbar-actions">
+                    <AIStatusIndicator />
                 </div>
             </nav>
         </>

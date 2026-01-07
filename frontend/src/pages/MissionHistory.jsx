@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MissionCard from '../components/MissionCard';
 import { missionsApi } from '../api';
@@ -12,11 +12,7 @@ export default function MissionHistory() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        loadMissions();
-    }, []);
-
-    const loadMissions = async () => {
+    const loadMissions = useCallback(async () => {
         setIsLoading(true);
         setError(null);
 
@@ -29,7 +25,11 @@ export default function MissionHistory() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        loadMissions();
+    }, [loadMissions]);
 
     const handleDelete = async (missionId) => {
         try {

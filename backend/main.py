@@ -95,7 +95,29 @@ async def health_check():
     return {
         "status": "healthy",
         "database": "connected",
-        "ai_model": settings.huggingface_model
+        "ai_model": settings.huggingface_model,
+        "ai_configured": bool(settings.huggingface_api_key)
+    }
+
+
+@app.get("/api/ai/status")
+async def ai_status():
+    """
+    Get AI model connection status.
+    Tests the connection to Hugging Face API and returns detailed status.
+    """
+    from ai import get_llm_client
+    
+    client = get_llm_client()
+    status = await client.test_connection()
+    
+    return {
+        "connected": status.get("connected", False),
+        "model": status.get("model"),
+        "response_time_ms": status.get("response_time_ms", 0),
+        "error": status.get("error"),
+        "loading": status.get("loading", False),
+        "stats": client.get_stats()
     }
 
 

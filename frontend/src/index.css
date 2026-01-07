@@ -1731,3 +1731,221 @@ code,
     border: 1px solid #ccc;
   }
 }
+
+/* === AI Status Indicator === */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.ai-status-container {
+  position: relative;
+}
+
+.ai-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-mono);
+}
+
+.ai-status-indicator:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ai-status-dot {
+  font-size: 0.625rem;
+  line-height: 1;
+}
+
+.ai-status-label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Status states */
+.ai-status--checking .ai-status-dot {
+  color: #FFA726;
+  animation: pulse 1.5s infinite;
+}
+
+.ai-status--connected .ai-status-dot {
+  color: #4CAF50;
+}
+
+.ai-status--loading .ai-status-dot {
+  color: #FFA726;
+  animation: spin 1s linear infinite;
+}
+
+.ai-status--disconnected .ai-status-dot {
+  color: #EF5350;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Status dropdown */
+.ai-status-dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-sm));
+  right: 0;
+  width: 280px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  padding: var(--space-md);
+}
+
+.ai-status-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ai-status-dot-large {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.ai-status-dot-large.ai-status--connected {
+  color: #4CAF50;
+}
+
+.ai-status-dot-large.ai-status--disconnected {
+  color: #EF5350;
+}
+
+.ai-status-dot-large.ai-status--checking {
+  color: #FFA726;
+}
+
+.ai-status-dot-large.ai-status--loading {
+  color: #FFA726;
+}
+
+.ai-status-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ai-status-title strong {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+}
+
+.ai-status-state {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ai-status-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.ai-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.ai-status-label-detail {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ai-status-value {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  font-size: 0.8125rem;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ai-status-error .ai-status-value {
+  color: var(--color-error);
+  font-size: 0.75rem;
+}
+
+.ai-status-muted .ai-status-value {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.ai-status-refresh {
+  width: 100%;
+  padding: var(--space-sm);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  transition: all var(--transition-fast);
+}
+
+.ai-status-refresh:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+/* Responsive - hide label on smaller screens */
+@media (max-width: 768px) {
+  .ai-status-label {
+    display: none;
+  }
+
+  .ai-status-dropdown {
+    width: 250px;
+    right: -80px;
+  }
+}
